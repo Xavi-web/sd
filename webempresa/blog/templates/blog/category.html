@@ -1,0 +1,44 @@
+{% extends 'core/base.html'%}
+
+{% load static %}
+{%block titulo%}Blog{%endblock%}
+{%block cuerpo%}
+
+
+           <div class="cta-innerv text-center rounded">
+                   <br><h2 class="section-heading mb-4">  <strong>{{category}}</strong></h2>
+            </div>
+
+{%for reg in category.get_posts.all %} <!-- usa la relacion segun related name para filtrar por categoria -->
+    <section class="page-section cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-innerv text-center rounded">
+              <h2 class="section-heading mb-5">
+                <span class="section-heading-upper">{{reg.published|date:"SHORT_DATE_FORMAT"}}</span> <!-- Cambiamos formato de fecha -->
+                <span class="section-heading-lower">{{reg.title}}</span>
+              </h2>
+              {%if reg.image %}
+              <p class="mb-0 ">
+                <img class="mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{ reg.image.url }}" alt="">
+              </p>
+              {%endif%}
+              <p class="mb-0 mbt">
+                {{reg.content|linebreaks}}  <!-- para que acepte intros como <br> -->
+              </p>
+              <p class="mb-0 mbt">
+                <span class="section-heading-under">Publicado por <em><b> {{reg.author}}</b></em> en: 
+                   {% for categ in reg.categories.all %}   <!--  el ALL ejecuta la consulta del campo many to many-->
+                      <em><a href="{% url 'category' categ.id%}" class=' fosc' >{{categ.name}}</a></em>
+                      {%if not forloop.last%},{%endif%}    <!--  forloop.first y forloop.last son variables especiales dentro de un tag for -->
+                   {%endfor%}
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{%endfor%}
+{%endblock%}

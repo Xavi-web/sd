@@ -1,0 +1,30 @@
+{% extends 'core/base.html'%}
+
+{% load static %}
+{%block titulo%}Historia{%endblock%}
+
+{%block cuerpo%}
+{%for reg in blogData %}
+    <section class="page-section about-heading">
+      <div class="container">
+        <div class="about-heading-content mbtm">
+          <div class="row">
+            <div class="col-xl-9 col-lg-10 mx-auto">
+              <div class="bg-faded rounded p-5 forced">
+                <h3 class="section-heading mb-4">
+                  <span class="section-heading-lower">{{reg.title}}</span>
+                </h3>
+                <div class="section-content">
+                    <p>{{reg.content}}</p>
+                </div>
+              {%if reg.image %}
+             <img src="{{ reg.image.url }}"  class="img-responsive thumbnail " alt="img">
+             {%endif%}
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{%endfor%}
+{%endblock%}

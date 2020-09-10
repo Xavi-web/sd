@@ -1,0 +1,38 @@
+{% extends 'core/base.html'%}
+
+{% load static %}
+{%block titulo%}Historia{%endblock%}
+
+
+
+{%block cuerpo%}
+
+
+    <section class="page-section about-heading">
+      <div class="container">
+        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{%static 'core/img/custom1.png' %}" alt="">
+        <div class="about-heading-content">
+          <div class="row">
+            <div class="col-xl- col-lg-10 mx-auto">
+              <div class="bg-faded rounded p-5">
+                <h2 class="section-heading mb-4">
+                  <span class="section-heading-upper">Sotware de escritorio</span>
+                  <span class="section-heading-lower">Programación a medida</span>
+                </h2>
+                <p>
+                ¿ Está su empresa usando demasiados programas diferentes?<br>  
+                ¿ Tiene que entrar muchos datos varias veces?<br>
+                ¿ Tiene Vd. claro lo que  necesita pero no encuentra ningún programa que consiga dárselo? </p>
+                <p>Si ha respondido Sí a alguna de estas preguntas lo que Vd. necesita es un sofware a medida. 
+                <br>Un programa que se adapte a su negocio sin complicar su estructura de datos y manteniendo la agilidad en la entrada de datos:<br><br>
+                <strong>Todo lo que necesita y sólo lo que necesita !</strong> 
+                <br>... <a class=" text-expanded dark" href="{% url 'contact' %}">Contáctenos</a>, conocemos su problema.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+{%endblock%}

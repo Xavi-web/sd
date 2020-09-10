@@ -1,0 +1,30 @@
+{%extends 'core/base.html'%}
+
+{% load static %}
+{%block titulo%}Visitanos{%endblock%}
+{%block cuerpo%}
+  {%if not servicesData%}<div class="product-item"><span class="section-heading-upper mb-0">Sin servicio</span></div>{%endif%}
+
+  {%for reg in servicesData     %}     <!-- services, lista de objetos del model services que cargamos en views.py  -->
+      <section class="page-section">
+        <div class="container">
+          <div class="product-item">
+            <div class="product-item-title d-flex">
+              <div class="bg-faded p-5 d-flex mr-auto rounded">
+                <h2 class="section-heading mb-0">
+                  <span class="section-heading-upper gray">{{reg.subtitle}}</span>               
+                  <span class="section-heading-lower">{{reg.title}}</span>
+                </h2>
+              </div>
+            </div>
+            <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0 " style="width:80%" src="{{reg.image.url}}" alt="{{reg.title}}">
+            <div class="product-item-description d-flex ml-auto">
+              <div class="bg-faded p-5 rounded">
+                <p class="mb-0">{{reg.content}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  {%endfor%}
+{%endblock%}
